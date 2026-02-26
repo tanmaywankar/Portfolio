@@ -85,7 +85,10 @@ gsap.from(".grid1 , .navbar, .Cta", {
 });
 
 //mouse animation
+document.addEventListener("DOMContentLoaded", () => {
 const heroContainer = document.querySelector(".hero");
+
+    if (!heroContainer) return;
 
 function initHeroParallax() {
     if(window.matchMedia("pointer:fine").matches){
@@ -119,6 +122,8 @@ function initHeroParallax() {
     });
 }
 }
+initHeroParallax();
+});
 
 gsap.from(".grid_item3, .grid_item4, .Status_card, .grid_item5", {
     y: 50,              
