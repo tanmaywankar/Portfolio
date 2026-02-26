@@ -1,13 +1,10 @@
 
 gsap.registerPlugin(ScrollTrigger);
 // alert("Site is currently Work in Progress and so a good amount of things are not working");
-
-const heroTl = gsap.timeline();
-const mouseTl = gsap.timeline({
-    delay: 2,
+document.addEventListener("DOMContentLoaded", () => {
+const heroTl = gsap.timeline({
     onComplete: initHeroParallax
 });
-
 
 gsap.from(".navbar",
     {
@@ -85,13 +82,13 @@ gsap.from(".grid1 , .navbar, .Cta", {
 });
 
 //mouse animation
-document.addEventListener("DOMContentLoaded", () => {
+
 const heroContainer = document.querySelector(".hero");
 
     if (!heroContainer) return;
 
 function initHeroParallax() {
-    if(window.matchMedia("pointer:fine").matches){
+    if(window.matchMedia("(pointer:fine)").matches){
     heroContainer.addEventListener("mousemove", (e) => {
         const { width, height, left, top } = heroContainer.getBoundingClientRect();
         const xPos = ((e.clientX - left) / width) - 0.5;
@@ -122,8 +119,6 @@ function initHeroParallax() {
     });
 }
 }
-initHeroParallax();
-});
 
 gsap.from(".grid_item3, .grid_item4, .Status_card, .grid_item5", {
     y: 50,              
@@ -185,4 +180,5 @@ gsap.fromTo(".progress-stroke",
         start: "top 80%",       
         toggleActions: "play none none none" 
     }
+});
 });
