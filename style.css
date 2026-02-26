@@ -568,3 +568,62 @@ border-radius: 0px 8px 8px 8px;
     font-family: "IBM Plex Mono";
     color: #9dffbb;
 }
+
+.overlay{
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    z-index: 20;
+    pointer-events: none;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.858) 10%, transparent 90%);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    transition: opacity 0.3s ease;
+}
+
+.overlay_container{
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+    align-items: center;
+    height: 20%;
+    width: 100%;
+    font-size: 18px;
+    font-family: "IBM Plex Mono";
+    color: #fff;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.overlay_info{
+    width: 70%;
+    margin: 0px;
+    text-align: center;
+    padding: 15px;
+    border-radius: 40px;
+    /* background-color: #00464683; */
+}
+
+.overlay_link{
+    width: 15%;
+    margin-right: 5%;
+    padding: 15px;
+    border-radius: 40px;
+    font-family: "IBM Plex Mono";
+    font-weight: 900;
+    background: #ffffff22;
+    pointer-events: auto; 
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+a{
+        text-decoration: none;
+        color: #fff;
+}
+
+.overlay_link:hover{
+    background: #ffffff50;
+}

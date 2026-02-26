@@ -2,6 +2,36 @@
 gsap.registerPlugin(ScrollTrigger);
 // alert("Site is currently Work in Progress and so a good amount of things are not working");
 document.addEventListener("DOMContentLoaded", () => {
+
+const projectItems = gsap.utils.toArray(".grid_item1, .grid_item2");
+
+projectItems.forEach((item) => {
+        const overlay = item.querySelector(".overlay");
+        const container = item.querySelector(".overlay_container");
+
+        // Create a unique timeline for this card
+        const hoverTl = gsap.timeline({ paused: true });
+
+
+        // 2. Fade in the gradient overlay
+        hoverTl.to(overlay, { 
+            opacity: 1, 
+            duration: 0.3 
+        }, 0);
+
+        // 3. Slide up the text container
+        hoverTl.to(container, { 
+            opacity: 1, 
+            y: 0, 
+            duration: 0.4, 
+            ease: "power2.out" 
+        }, "-=0.2"); // Overlap for smoothness
+
+        // Attach events to the whole item box
+        item.addEventListener("mouseenter", () => hoverTl.play());
+        item.addEventListener("mouseleave", () => hoverTl.reverse());
+    });
+
 const heroTl = gsap.timeline({
     onComplete: initHeroParallax
 });
@@ -24,6 +54,8 @@ gsap.from(".navbar",
 const cards = gsap.utils.toArray(".Grid_card");
 
 cards.forEach((card) => {
+
+    
     const animation = gsap.to(card,{
         scale:1.05,
         duration:0.3,
@@ -31,9 +63,16 @@ cards.forEach((card) => {
         reverse: true,
         ease: "power1.inOut"
     });
-    card.addEventListener("mouseenter", () => animation.play());
-    card.addEventListener("mouseleave", () => animation.reverse());
+    card.addEventListener("mouseenter", () =>{
+        animation.play();
+    } 
+);
+    card.addEventListener("mouseleave", () => {
+        animation.reverse();
+    });
 });
+
+
 
 
 const skills = gsap.utils.toArray(".Skills, .Status_card");
@@ -74,7 +113,7 @@ gsap.from(".grid1 , .navbar, .Cta", {
     stagger: 0.3,
     ease: "power4.out",
      scrollTrigger: {
-        trigger: ".Hero", 
+        trigger: ".hero", 
         start: "top 20%",       
         toggleActions: "play none none none" 
     }
@@ -128,7 +167,7 @@ gsap.from(".grid_item3, .grid_item4, .Status_card, .grid_item5", {
     ease: "power2.out",  
     scrollTrigger: {
         trigger: ".Bento_grid", 
-        start: "top 15%",       
+        start: "top 30%",       
         toggleActions: "play none none none" 
     }
 });
@@ -176,8 +215,8 @@ gsap.fromTo(".progress-stroke",
     stagger: 0.3,       
     ease: "power2.out",  
     scrollTrigger: {
-        trigger: ".grid_item4", 
-        start: "top 80%",       
+        trigger: ".Social_handles", 
+        start: "top 95%",       
         toggleActions: "play none none none" 
     }
 });
